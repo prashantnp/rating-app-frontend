@@ -20,6 +20,10 @@ export class NewQuestionComponent {
     private questionsService: QuestionsService,
     private router: Router) { }
 
+  onCancel() {
+    this.router.navigate(['/questions']);
+  }
+
   onCreateQuestion(formData: NgForm) {
     this.questionsService.createQuestion(formData.value).subscribe((res) => {
       console.log(res)
