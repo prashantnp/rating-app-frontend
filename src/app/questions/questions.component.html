@@ -1,0 +1,40 @@
+<div *ngIf="fetchingData" class="alert alert-primary" role="alert">
+    Fetching data ...
+</div>
+
+<div *ngIf="!fetchingData && !questions.length" class="alert alert-danger" role="alert">
+    No data found
+</div>
+
+<div *ngIf="!fetchingData && questions.length">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Priority</th>
+                <th scope="col">Question</th>
+                <th scope="col">Teaming Stages</th>
+                <th scope="col">Appears (Day)</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Type</th>
+                <th scope="col">Role</th>
+                <th scope="col">Required?</th>
+                <th scope="col">Conditions</th>
+                <th scope="col">Mapping</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let question of questions">
+                <td>{{ question.priority }}</td>
+                <td>{{ question.question }}</td>
+                <td>{{ question.teamingStage}}</td>
+                <td>{{ question.appearsDay}}</td>
+                <td>{{ question.frequency}}</td>
+                <td>{{ question.questionType}}</td>
+                <td>{{ question.role}}</td>
+                <td>{{ question.required}}</td>
+                <td>{{ question.conditions}}</td>
+                <td>{{ question.mapping }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
