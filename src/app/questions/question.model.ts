@@ -1,4 +1,5 @@
 export interface Question {
+    id: number;
     priority: number;
     question: string;
     teamingStage: string;

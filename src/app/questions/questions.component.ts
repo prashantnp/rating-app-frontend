@@ -1,30 +1,30 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Question } from './question.model';
 import { QuestionsService } from './questions.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.css']
 })
-export class QuestionsComponent implements OnInit, OnDestroy {
+export class QuestionsComponent implements OnInit {
   questions: Question[] = [];
   fetchingData: boolean = false;
-  questionsServiceSub: Subscription;
 
   constructor(private questionsService: QuestionsService) { }
 
   ngOnInit() {
     this.fetchingData = true;
 
-    this.questionsServiceSub = this.questionsService.getQuestions().subscribe((res) => {
+    this.questionsService.getQuestions().subscribe((res) => {
       this.fetchingData = false;
       this.questions = res.questions;
     });
   }
 
-  ngOnDestroy() {
-    this.questionsServiceSub.unsubscribe();
+  onClickDelete(id: number) {
+    this.questionsService.deleteQuestion(id).subscribe((res) => {
+      this.questions = res.questions;
+    });
   }
 }

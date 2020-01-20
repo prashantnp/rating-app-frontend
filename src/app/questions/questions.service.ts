@@ -19,4 +19,17 @@ export class QuestionsService {
             }
         }));
     }
+
+    deleteQuestion(id: number): Observable<{questions: Question[]}> {
+        return this.http.delete<{questions: Question[]}>(`${this.apiBaseUrl}/questions/${id}`)
+        .pipe(map((res) => {
+            return {
+                questions: res.questions.map(question => _.mapKeys(question, (v, k) => _.camelCase(k)))
+            }
+        }));
+    }
+
+    createQuestion(question: Question) {
+        return this.http.post(`${this.apiBaseUrl}/questions`, {question: question});
+    }
 }
