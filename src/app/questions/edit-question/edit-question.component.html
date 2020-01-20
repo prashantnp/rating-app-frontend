@@ -1,0 +1,168 @@
+<div
+    *ngIf="!question"
+    class="alert alert-primary"
+    role="alert">
+    Loading ...
+</div>
+
+<form *ngIf="question" ngForm (ngSubmit)="onUpdateQuestion(questionForm)" #questionForm="ngForm">
+        <div class="form-group row">
+            <label for="priority" class="col-sm-2 col-form-label">Priority</label>
+            <div class="col-sm-10">
+                <input
+                    type="number"
+                    class="form-control"
+                    name="priority"
+                    id="priority"
+                    [ngModel]='question.priority'
+                    required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="question" class="col-sm-2 col-form-label">Question</label>
+            <div class="col-sm-10">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="question"
+                    name="question"
+                    [ngModel]="question.question"
+                    required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="teamingStage" class="col-sm-2 col-form-label">Teaming Stage</label>
+            <div class="col-sm-10">
+                <select
+                    class="form-control"
+                    id="teamingStage"
+                    name="teamingStage"
+                    [ngModel]="question.teamingStage"
+                    required>
+                    <option
+                        *ngFor="let teamingStage of teamingStages"
+                        [value]="teamingStage">
+                        {{teamingStage}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="appearsDay" class="col-sm-2 col-form-label">Appears (Day)</label>
+            <div class="col-sm-10">
+                <input
+                    type="number"
+                    class="form-control"
+                    id="appearsDay"
+                    name="appearsDay"
+                    [ngModel]="question.appearsDay"
+                    required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="frequency" class="col-sm-2 col-form-label">Frequency</label>
+            <div class="col-sm-10">
+                <input
+                    type="number"
+                    class="form-control"
+                    id="frequency"
+                    name="frequency"
+                    [ngModel]="question.frequency"
+                    required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="questionType" class="col-sm-2 col-form-label">Type</label>
+            <div class="col-sm-10">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="questionType"
+                    name="questionType"
+                    [ngModel]="question.questionType"
+                    required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="role" class="col-sm-2 col-form-label">Role</label>
+            <div class="col-sm-10">
+                <select
+                    class="form-control"
+                    id="role"
+                    name="role"
+                    [ngModel]="question.role"
+                    required>
+                    <option
+                        *ngFor="let role of roles"
+                        [value]="role">
+                        {{role}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="required" class="col-sm-2 col-form-label">Required?</label>
+            <div class="col-sm-10">
+                <select
+                    class="form-control"
+                    id="required"
+                    name="required"
+                    [ngModel]="question.required"
+                    required>
+                    <option
+                        *ngFor="let elem of required"
+                        [value]="elem">
+                        {{elem}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="conditions" class="col-sm-2 col-form-label">Conditions</label>
+            <div class="col-sm-10">
+                <select
+                    class="form-control"
+                    id="conditions"
+                    name="conditions"
+                    [ngModel]="question.conditions"
+                    required>
+                    <option
+                        *ngFor="let condition of conditions"
+                        [value]="condition">
+                        {{condition}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="mapping" class="col-sm-2 col-form-label">Mapping</label>
+            <div class="col-sm-10">
+                <select
+                    class="form-control"
+                    id="mapping"
+                    name="mapping"
+                    [ngModel]="question.mapping"
+                    required>
+                    <option
+                        *ngFor="let mapping of mappings"
+                        [value]="mapping">
+                        {{mapping}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+                <button
+                    (click)="onCancel()"
+                    type="button"
+                    class="btn btn-secondary btn-sm mr-1">
+                    Cancel
+                </button>
+                <button
+                    [disabled]="!questionForm.valid"
+                    type="submit"
+                    class="btn btn-primary btn-sm">
+                    Submit
+                </button>
+        </div>
+    </form>

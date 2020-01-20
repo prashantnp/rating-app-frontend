@@ -13,6 +13,11 @@
 </div>
 
 <div *ngIf="!fetchingData && questions.length">
+    <button
+        [routerLink]="'/questions/new'"
+        class="btn btn-primary btn-sm mb-1">
+        Add Question
+    </button>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -42,6 +47,11 @@
                 <td>{{ question.conditions}}</td>
                 <td>{{ question.mapping }}</td>
                 <td>
+                    <a
+                        [routerLink]="['/questions', question.id, 'edit']"
+                        class="text-info">
+                        Edit
+                    </a>
                     <a
                         [routerLink]=""
                         (click)="onClickDelete(question.id)"

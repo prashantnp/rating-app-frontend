@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewQuestionComponent } from './questions/new-question/new-question.component';
+import { EditQuestionComponent } from './questions/edit-question/edit-question.component';
 
 const routes: Routes = [
   { path: 'questions', component: QuestionsComponent },
   { path: 'questions/new', component: NewQuestionComponent },
+  { path: 'questions/:id/edit', component: EditQuestionComponent },
   { path: '', redirectTo: 'questions', pathMatch: 'full' }
 ];
 
@@ -18,7 +20,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     QuestionsComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    EditQuestionComponent
   ],
   imports: [
     BrowserModule,

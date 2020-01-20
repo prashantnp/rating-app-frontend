@@ -30,6 +30,19 @@ export class QuestionsService {
     }
 
     createQuestion(question: Question) {
-        return this.http.post(`${this.apiBaseUrl}/questions`, {question: question});
+        return this.http.post(`${this.apiBaseUrl}/questions`, { question: question });
+    }
+
+    updateQuestion(id: number, question: Question) {
+        return this.http.patch(`${this.apiBaseUrl}/questions/${id}`, { question: question });
+    }
+
+    getQuestion(id: number): Observable<{question: Question}> {
+        return this.http.get<{question: Question}>(`${this.apiBaseUrl}/questions/${id}`)
+        .pipe(map((res) => {
+            return {
+                question: _.mapKeys(res.question, (v, k) => _.camelCase(k))
+            }
+        }))
     }
 }
