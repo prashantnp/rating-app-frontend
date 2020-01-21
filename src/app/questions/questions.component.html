@@ -36,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let question of questions | paginate: { itemsPerPage: 4, currentPage: page }">
+            <tr *ngFor="let question of questions | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
                 <td>{{ question.priority }}</td>
                 <td>{{ question.question }}</td>
                 <td>{{ question.teamingStage}}</td>
@@ -67,7 +67,7 @@
 
     <pagination-controls
         class="text-center"
-        (pageChange)="page = $event"
+        (pageChange)="currentPage = $event"
         responsive="true">
     </pagination-controls>
 </div>

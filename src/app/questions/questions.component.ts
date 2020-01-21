@@ -10,7 +10,8 @@ import { QuestionsService } from './questions.service';
 export class QuestionsComponent implements OnInit {
   questions: Question[] = [];
   fetchingData: boolean = false;
-  page: number = 1;
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
   constructor(private questionsService: QuestionsService) { }
 
