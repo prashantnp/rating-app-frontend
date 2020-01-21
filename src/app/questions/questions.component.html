@@ -1,3 +1,9 @@
+<button
+    [routerLink]="'/questions/new'"
+    class="btn btn-primary btn-sm mb-1">
+    Add New Question
+</button>
+
 <div
     *ngIf="fetchingData"
     class="alert alert-primary"
@@ -13,11 +19,6 @@
 </div>
 
 <div *ngIf="!fetchingData && questions.length">
-    <button
-        [routerLink]="'/questions/new'"
-        class="btn btn-primary btn-sm mb-1">
-        Add Question
-    </button>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -35,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let question of questions">
+            <tr *ngFor="let question of questions | paginate: { itemsPerPage: 4, currentPage: page }">
                 <td>{{ question.priority }}</td>
                 <td>{{ question.question }}</td>
                 <td>{{ question.teamingStage}}</td>
@@ -62,4 +63,11 @@
             </tr>
         </tbody>
     </table>
+
+
+    <pagination-controls
+        class="text-center"
+        (pageChange)="page = $event"
+        responsive="true">
+    </pagination-controls>
 </div>
