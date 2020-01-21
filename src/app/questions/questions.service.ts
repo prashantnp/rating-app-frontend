@@ -7,7 +7,7 @@ import { map } from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
 export class QuestionsService {
-    apiBaseUrl: string = "http://localhost:3000";
+    apiBaseUrl: string = "https://rating-app-backend.herokuapp.com";
 
     constructor(private http: HttpClient) {}
 
